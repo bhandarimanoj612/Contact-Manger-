@@ -1,0 +1,124 @@
+[
+  
+  {
+    "id": "c2d7e9f3-5b6a-4d2e-8f11-2b3c4d5e6f78",
+    "name": "Manoj Bhandari",
+    "phone": "0735019 1175",
+    "email": "bhandarimanoj@gmail.com",
+    "group": "Family",
+    "notes": "Frontend developer on the Phoenix project.",
+    "favorite": false,
+    "createdAt": "2025-10-21T09:15:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "c2d7e9f3-5b6a-4d2e-8f11-2b3c4d5e6f78",
+    "name": "Raj Limbu",
+    "phone": "07911 123456",
+    "email": "raj@gmail.com",
+    "group": "Work",
+    "notes": "Frontend developer on the Phoenix project.",
+    "favorite": false,
+    "createdAt": "2025-10-21T09:15:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "b1a6f8c2-3f4d-4a9b-9e72-1c2d3e4f5a67",
+    "name": "Aryan Dhamala",
+    "phone": "07350 191725",
+    "email": "aryan@gmail.com",
+    "group": "Friends",
+    "notes": "Met at college. Prefers evening calls.",
+    "favorite": true,
+    "createdAt": "2025-10-21T08:30:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "d3e8f0a4-6c7b-4f3a-9b22-3c4d5e6f7a89",
+    "name": "Sujan Karki",
+    "phone": "07700 654321",
+    "email": "sujan@gmail.com",
+    "group": "Family",
+    "notes": "Cousin. Lives nearby; available on weekends.",
+    "favorite": false,
+    "createdAt": "2025-10-21T10:00:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "e4f901b5-7d8c-4a5b-9c33-4d5e6f7a8b90",
+    "name": "Maya Karki",
+    "phone": "07800 112233",
+    "email": "maya@gmail.com",
+    "group": "Friends",
+    "notes": "Gym buddy. Loves early-morning chats.",
+    "favorite": true,
+    "createdAt": "2025-10-21T11:12:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "f5a012c6-8e9d-4b6c-8d44-5e6f7a8b9c01",
+    "name": "Karan Rai",
+    "phone": "07654 998877",
+    "email": "karan@gmail.com",
+    "group": "Work",
+    "notes": "Backend engineer. Usually busy during sprints.",
+    "favorite": false,
+    "createdAt": "2025-10-21T12:20:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "a6b123d7-9f0e-4c7d-8e55-6f7a8b9c0d12",
+    "name": "Neha Karki",
+    "phone": "07300 445566",
+    "email": "neha@gmail.com",
+    "group": "Family",
+    "notes": "Aunt. Prefers texting over calls.",
+    "favorite": false,
+    "createdAt": "2025-10-21T12:45:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "b7c234e8-af1f-4d8e-9f66-7a8b9c0d1e23",
+    "name": "Liam Rai",
+    "phone": "07900 778899",
+    "email": "liam@gmail.com",
+    "group": "Work",
+    "notes": "Manager. Great with deadlines.",
+    "favorite": false,
+    "createdAt": "2025-10-21T13:10:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "c8d345f9-b021-4e9f-af77-8b9c0d1e2f34",
+    "name": "Sophia Karki",
+    "phone": "07200 334455",
+    "email": "sophia@gmail.com",
+    "group": "Friends",
+    "notes": "Neighbor. Shares bakery recommendations.",
+    "favorite": true,
+    "createdAt": "2025-10-21T13:48:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "d9e4560a-c132-4fa0-b088-9c0d1e2f3a45",
+    "name": "Aditya Rai",
+    "phone": "07711 221100",
+    "email": "aditya@gmail.com",
+    "group": "Work",
+    "notes": "Intern. Learns quickly.",
+    "favorite": false,
+    "createdAt": "2025-10-21T14:00:00.000Z",
+    "country": "uk"
+  },
+  {
+    "id": "e0f5671b-d243-4ab1-c199-0d1e2f3a4b56",
+    "name": "Priya Karki",
+    "phone": "07811 990011",
+    "email": "priya@gmail.com",
+    "group": "Friends",
+    "notes": "Movie enthusiast. Great for weekend plans.",
+    "favorite": true,
+    "createdAt": "2025-10-21T14:30:00.000Z",
+    "country": "uk"
+  }
+]

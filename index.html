@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contacts Manager</title>
+
+    <!-- Google font for smoother UI look -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for icons used throughout the app -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Main app stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- ─────────────── HEADER ─────────────── -->
+      <!-- Contains app title, search bar, add/import/export buttons -->
+      <header class="app-header">
+        <div class="brand">
+          <div class="search-row">
+            <div class="search-add">
+              <!-- Small logo block -->
+              <div class="logo-box">C</div>
+
+              <!-- App version/branding text -->
+              <div class="version">Contact Manager</div>
+            </div>
+
+            <!-- Search field for filtering contacts live -->
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search contacts..."
+              aria-label="Search"
+            />
+          </div>
+
+          <!-- Main action buttons: add new contact, export, import -->
+          <div class="add-import-export">
+            <button
+              id="addContactBtn"
+              class="btn primary"
+              aria-label="Add contact"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+
+            <button id="exportBtn" class="btn primary">
+              <i class="fas fa-download"></i> Export
+            </button>
+
+            <button id="importBtn" class="btn primary">
+              <i class="fas fa-upload"></i> Import
+            </button>
+
+            <!-- Hidden actual file input for importing JSON files -->
+            <input
+              type="file"
+              id="importFile"
+              accept="application/json"
+              hidden
+            />
+          </div>
+        </div>
+      </header>
+
+      <!-- ─────────────── MAIN CONTENT AREA ─────────────── -->
+      <main class="container">
+        <!-- Top controls: tabs, sort, filter, items per page -->
+        <div class="tabs-row">
+          <div class="tabs-left">
+            <!-- "All contacts" tab -->
+            <button class="tab-compact active" data-tab="all">All</button>
+
+            <!-- "Favorites" tab using star icon -->
+            <button class="tab-compact" data-tab="favorites">
+              <i class="fas fa-star"></i>
+            </button>
+          </div>
+
+          <!-- Sorting dropdown -->
+          <select id="sortSelect" aria-label="Sort">
+            <option value="name-asc">A–Z</option>
+            <option value="name-desc">Z–A</option>
+            <option value="recent">Recently Added</option>
+          </select>
+
+          <!-- Filter contacts by group/category -->
+          <select id="filterGroup" aria-label="Filter group">
+            <option value="">All Groups</option>
+            <option>Family</option>
+            <option>Friends</option>
+            <option>Work</option>
+            <option>Other</option>
+          </select>
+
+          <!-- Allow user to choose how many contacts appear per page -->
+          <select id="pageSizeSelect" aria-label="Contacts per page">
+            <option value="3">3 page</option>
+            <option value="5">5 page</option>
+            <option value="10" selected>10 page</option>
+            <option value="20">20 page</option>
+            <option value="50">50 page</option>
+          </select>
+        </div>
+
+        <!-- Contact cards will be injected here via JS -->
+        <section id="contactsSection" class="contacts-section"></section>
+
+        <!-- Pagination area (previous/next buttons + page info text) -->
+        <div class="pagination-controls">
+          <button id="prevPageBtn" class="btn ghost" disabled>
+            <i class="fas fa-chevron-left"></i> Previous
+          </button>
+
+          <span id="pageInfo" class="label-info">Page 1 of 1</span>
+
+          <button id="nextPageBtn" class="btn ghost" disabled>
+            Next <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </main>
+
+      <!-- ─────────────── FOOTER ─────────────── -->
+      <footer class="footer">
+        <div>
+          <h1>Contacts Manager</h1>
+
+          <!-- Simple credits/signature block -->
+          <div class="version">Manoj Bhandari •B01822731</div>
+          <div class="version">COMP11121 — Contact Manager v1.1</div>
+        </div>
+      </footer>
+
+      <!-- ─────────────── CONTACT MODAL (ADD/EDIT FORM) ─────────────── -->
+      <!-- Hidden by default; opened when adding or editing a contact -->
+      <div id="contactModal" class="modal" aria-hidden="true" role="dialog">
+        <div class="modal-panel">
+          <div class="modal-header">
+            <strong id="modalTitle">Add Contact</strong>
+
+            <!-- Close modal button -->
+            <button id="modalClose" class="icon-btn" aria-label="Close">
+              ✕
+            </button>
+          </div>
+
+          <!-- Add/Edit contact form -->
+          <form id="contactForm" novalidate>
+            <!-- Hidden field to store ID when editing a contact -->
+            <input type="hidden" id="contactId" />
+
+            <label>
+              Full name *
+              <input
+                id="fullName"
+                type="text"
+                required
+                minlength="2"
+                placeholder="Manoj Bhandari"
+              />
+            </label>
+
+            <div class="form-row">
+              <label>
+                Phone *
+                <input
+                  id="phone"
+                  type="tel"
+                  required
+                  placeholder="0123 456789"
+                  pattern="^\+?[0-9\\s\\-()]{7,20}$"
+                />
+              </label>
+
+              <label>
+                Email *
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  placeholder="manoj@example.com"
+                />
+              </label>
+            </div>
+
+            <label>
+              Country *
+              <select id="countrySelect" required>
+                <option value="">Select Country</option>
+                <option value="usa">USA</option>
+                <option value="uk">UK</option>
+                <option value="nepal">Nepal</option>
+                <option value="canada">Canada</option>
+                <option value="japan">Japan</option>
+              </select>
+            </label>
+
+            <label>
+              Group
+              <select id="groupSelect">
+                <option value="">No Group</option>
+                <option>Family</option>
+                <option>Friends</option>
+                <option>Work</option>
+                <option>Other</option>
+              </select>
+            </label>
+
+            <label>
+              Notes
+              <textarea
+                id="notes"
+                placeholder="Birthday, address, etc..."
+              ></textarea>
+            </label>
+
+            <!-- Form action buttons -->
+            <div class="form-actions">
+              <button type="button" id="cancelBtn" class="btn ghost">
+                Cancel
+              </button>
+              <button type="submit" id="saveBtn" class="btn primary">
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Toast notification box (JS updates text and shows/hides it) -->
+      <div id="toast" class="toast" aria-live="polite"></div>
+    </div>
+
+    <!-- ─────────────── JavaScript Files ─────────────── -->
+    <!-- Each file handles a separate part of the app's logic -->
+    <script src="js/storage.js"></script>
+    <!-- Handles opening/closing the Add/Edit modal -->
+    <script src="js/modal.js"></script>
+    <!-- CRUD functions + render card creation + validation helpers -->
+    <script src="js/contacts.js"></script>
+    <!-- Pagination helpers -->
+    <script src="js/pagination.js"></script>
+    <!-- Main app logic -->
+    <script src="js/app.js"></script>
+  </body>
+</html>

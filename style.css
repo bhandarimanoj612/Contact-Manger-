@@ -1,0 +1,528 @@
+/* ───────────────────────────────────────────────
+   Root Theme Variables
+──────────────────────────────────────────────── */
+:root {
+  --bg-main: #0c0f10;
+  --bg-card: #121416;
+  --accent: #00f59b;
+  --text: #e9f9f0;
+  --muted: #95a49b;
+}
+
+/* Reset sizing: prevents layout issues */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Basic page setup */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Poppins", system-ui;
+  background: var(--bg-main);
+  color: var(--text);
+}
+/* Makes app stretch full height for proper layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 12px;
+}
+
+/* ───────────────────────────────────────────────
+   HEADER -- App title, search bar, add/import/export
+──────────────────────────────────────────────── */
+.app-header {
+  background: linear-gradient(90deg, #072016, #083522);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Small square box with app initial "C" */
+.logo-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #00d688, #00f59b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #07130c;
+}
+
+/* Subtle small text */
+.version {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* Holds logo + search */
+.search-add {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Search bar styling */
+input[type="search"] {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--text);
+  min-width: 140px;
+}
+
+/* ───────────────────────────────────────────────
+   ADD / IMPORT / EXPORT BUTTONS
+──────────────────────────────────────────────── */
+.add-import-export {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.add-import-export .btn {
+  padding: 6px;
+  font-size: 0.69rem;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+/* ───────────────────────────────────────────────
+   BUTTONS Base styles
+──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+/* Main green button (Add/Import/Export */
+.btn.primary {
+  background: linear-gradient(90deg, #00d688, #00f59b);
+  color: #07130c;
+}
+
+/* Transparent outline-styled button */
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+/* Small icon-only buttons (modal close etc.) */
+.icon-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* ───────────────────────────────────────────────
+   TABS (All / Favorites)
+──────────────────────────────────────────────── */
+.tabs-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+.tabs-left {
+  display: flex;
+  gap: 8px;
+}
+
+/* Tab buttons */
+.tab-compact {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* Active tab uses green gradient */
+.tab-compact.active {
+  background: linear-gradient(90deg, #00d688, #00f59b);
+  color: #07130c;
+}
+
+/* ───────────────────────────────────────────────
+  SELECT DROPDOWNS (Sort / Filter / Page size)
+──────────────────────────────────────────────── */
+select {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 8px;
+  border-radius: 10px;
+  color: var(--text);
+}
+
+/* Dropdown menu styling */
+select option {
+  background-color: var(--bg-card);
+  color: var(--text);
+}
+
+/* ───────────────────────────────────────────────
+   CONTACT CARDS
+──────────────────────────────────────────────── */
+.contacts-section {
+  min-height: 160px;
+}
+
+/* Whole card container */
+.card {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.card:hover {
+  background: #073122;
+  transform: translateY(-2px);
+  border-color: rgba(109, 137, 110, 0.08);
+}
+
+/* Avatar box with first letter of name */
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #052016, #0b3a2b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #bfffe0;
+}
+
+/* Card body contains name + info lines  */
+.card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Name row contains name + favorite icon */
+.name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name-row h3 {
+  margin: 0;
+  font-size: 0.96rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Meta row contains other info like phone number , email,etc */
+.meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 6px;
+  word-break: break-word;
+}
+
+/* ───────────────────────────────────────────────
+   DETAILS PAGE OVERLAY
+──────────────────────────────────────────────── */
+.details-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+
+/* Details panel */
+.details-panel {
+  width: 90%;
+  max-width: 420px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.55);
+  animation: popIn 0.25s ease;
+  color: var(--text);
+  position: relative;
+}
+/* Details panel styling */
+
+.details-panel h2 {
+  margin: 0 20px 6px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.details-panel p{
+   display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;         /* allows wrapping */
+  word-break: break-word;  /* breaks long words or emails */
+  white-space: normal;     /* ensures text wraps */
+  line-height: 1.4;
+  gap: 6px;                /* small gap between label & text */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.details-panel p i {
+  /* min-width: 80px;       */
+  font-style: normal;   
+  color: var(--muted);
+}
+
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Action buttons */
+.details-actions {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.details-actions .btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 14px;
+  color: var(--text) !important; /* FIXES BLUE TEXT */
+  text-decoration: none !important;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.details-actions a {
+  color: var(--text) !important;
+}
+
+/* Row 2 for Edit + Delete */
+.details-actions .edit-btn,
+.details-actions .delete-btn {
+  grid-column: span 3; /* full width row */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-actions .btn:hover {
+  background: rgba(149, 212, 142, 0.1);
+  transform: translateY(-2px);
+}
+.details-panel p {
+  color: var(--text); /* brighter text */
+  opacity: 0.92; /* optional */
+/
+}
+
+/* ───────────────────────────────────────────────
+    MODAL (Add/Edit contact)
+──────────────────────────────────────────────── */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: flex-end;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-panel {
+  width: 100%;
+  background: var(--bg-card);
+  padding: 14px;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+/* ───────────────────────────────────────────────
+   FORM
+──────────────────────────────────────────────── */
+label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+input,
+textarea,
+select {
+  background: transparent;
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 17, 255, 0.03);
+  color: var(--text);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* ───────────────────────────────────────────────
+   PAGINATION
+──────────────────────────────────────────────── */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 8px;
+}
+
+.pagination-controls .btn {
+  padding: 8px 12px;
+  min-width: 100px;
+}
+
+.pagination-controls .label-info {
+  font-size: 0.95rem;
+  color: var(--text);
+  min-width: 100px;
+  text-align: center;
+}
+
+/* Disable look */
+.pagination-controls .btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* ───────────────────────────────────────────────
+   TOAST MESSAGE
+──────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 18px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  text-align: center;
+  display: none;
+  color: var(--text);
+}
+
+
+/* ───────────────────────────────────────────────
+   ANIMATIONS
+──────────────────────────────────────────────── */
+@keyframes popIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   FOOTER
+──────────────────────────────────────────────── */
+.footer {
+  padding: 12px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
